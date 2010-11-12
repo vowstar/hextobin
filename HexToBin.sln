@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexToBin", "HexToBin\HexToBin.csproj", "{FB3A290D-8BA1-4381-8A5D-74BFEFF761EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB3A290D-8BA1-4381-8A5D-74BFEFF761EC}.Debug|x86.ActiveCfg = Debug|x86
+		{FB3A290D-8BA1-4381-8A5D-74BFEFF761EC}.Debug|x86.Build.0 = Debug|x86
+		{FB3A290D-8BA1-4381-8A5D-74BFEFF761EC}.Release|x86.ActiveCfg = Release|x86
+		{FB3A290D-8BA1-4381-8A5D-74BFEFF761EC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = HexToBin\HexToBin.csproj
+	EndGlobalSection
+EndGlobal
