@@ -11,6 +11,7 @@
 using System;
 public class ConsoleOutput
 {
+	public static Boolean EnableColor = true;
 	public ConsoleOutput ()
 	{
 	}
@@ -24,15 +25,19 @@ public class ConsoleOutput
 	}
 	public static void WriteError (string format, params object[] arg)
 	{
-		Console.ForegroundColor = ConsoleColor.Blue;
+		if (EnableColor)
+			Console.ForegroundColor = ConsoleColor.Cyan;
 		Console.WriteLine (format, arg);
-		Console.ResetColor ();
+		if (EnableColor)
+			Console.ResetColor ();
 	}
 	public static void Writewarning (string format, params object[] arg)
 	{
-		Console.ForegroundColor = ConsoleColor.Yellow;
+		if (EnableColor)
+			Console.ForegroundColor = ConsoleColor.Yellow;
 		Console.WriteLine (format, arg);
-		Console.ResetColor ();
+		if (EnableColor)
+			Console.ResetColor ();
 	}
 	public static void LongLine ()
 	{

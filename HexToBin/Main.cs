@@ -148,54 +148,58 @@ namespace HexToBin
 							BinPath = Path.Combine (Path.GetDirectoryName (HexPath), Path.GetFileNameWithoutExtension (HexPath) + ".bin");
 						}
 						Console.WriteLine ("\tBin output file:\n{0}", BinPath);
-						ConsoleOutput.LongSingleLine();
-						Console.WriteLine("\tBegin convert");
-						if(!File.Exists(HexPath))
-						{
-							ConsoleOutput.WriteError("E:Hex input file NOT EXIST!");
-							Error=true;
+						ConsoleOutput.LongSingleLine ();
+						Console.WriteLine ("\t>>Begin convert...");
+						if (!File.Exists (HexPath)) {
+							ConsoleOutput.WriteError ("E:Hex input file NOT EXIST!");
+							Error = true;
 						}
-						if(File.Exists(BinPath))
-						{
-							ConsoleOutput.Writewarning("W:Bin output file already exist.");
+						if (File.Exists (BinPath)) {
+							ConsoleOutput.EnableColor = false;
+							ConsoleOutput.Writewarning ("W:Bin output file already exist.");
+							ConsoleOutput.EnableColor = true;
 						}
-						if(Path.GetExtension(HexPath).ToUpper()!=".HEX")
-						{
-							ConsoleOutput.Writewarning("W:Hex file\'s extension is not \".hex\"");
+						if (Path.GetExtension (HexPath).ToUpper () != ".HEX") {
+							ConsoleOutput.Writewarning ("W:Hex file\'s extension is not \".hex\"");
 						}
-						if(Path.GetExtension(BinPath).ToUpper()!=".BIN")
-						{
-							ConsoleOutput.Writewarning("W:Bin file\'s extension is not \".bin\"");
+						if (Path.GetExtension (BinPath).ToUpper () != ".BIN") {
+							ConsoleOutput.Writewarning ("W:Bin file\'s extension is not \".bin\"");
 						}
-						if(!Error)
+						if (!Error) {
+							McuUtils M = new McuUtils ();
+							M.HexFile = HexPath;
+							M.BinFile = BinPath;
+							M.ReadHexFile ();
+							M.WriteBinFile ();
+							Console.WriteLine ("\tHex Length={0}bytes", M.Hex.Length);
+							Console.WriteLine ("\tBin Length={0}bytes", M.Bin.Length);
+							Console.WriteLine ("\t>>Convert end.");
+						}
+						else
 						{
-							McuUtils M=new McuUtils();
-							M.HexFile=HexPath;
-							M.ReadHexFile();
-							Console.WriteLine(M.Hex);
-							
+							Console.WriteLine ("\t>>Convert failed.");
 						}
 						
 					}
 					
 					if (_Desktop) {
-					#if _USEING_GTK_
+						#if _USEING_GTK_
 						Console.WriteLine ("\tRunning GUI interface...");
 						Application.Init ();
 						MainWindow win = new MainWindow ();
 						win.Show ();
-						Application.Run ();	
-					#else
-					    Console.WriteLine ("\tNo GUI interface to run,please download GUI version.");
-                    #endif
+						Application.Run ();
+						#else
+						Console.WriteLine ("\tNo GUI interface to run,please download GUI version.");
+						#endif
 					}
-                    
+					
 					Console.WriteLine ("\tSafe exited.");
-					ConsoleOutput.LongSingleLine();
+					ConsoleOutput.LongSingleLine ();
 				}
 			} else {
 				Console.WriteLine ("\tAn Error occured,exited.");
-				ConsoleOutput.LongSingleLine();
+				ConsoleOutput.LongSingleLine ();
 			}
 			// Engine code end
 		}
