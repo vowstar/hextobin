@@ -167,6 +167,14 @@ namespace HexToBin
 						{
 							ConsoleOutput.Writewarning("W:Bin file\'s extension is not \".bin\"");
 						}
+						if(!Error)
+						{
+							McuUtils M=new McuUtils();
+							M.HexFile=HexPath;
+							M.ReadHexFile();
+							Console.WriteLine(M.Hex);
+							
+						}
 						
 					}
 					

@@ -9,41 +9,39 @@
 // 本软件及其代码的作者是黄锐,(Email:vowstar@gmail.com),Lanzhou University
 // --------------------------------------------------------------------------------------
 using System;
-namespace HexToBin
+public class ConsoleOutput
 {
-	public class ConsoleOutput
+	public ConsoleOutput ()
 	{
-		public ConsoleOutput ()
-		{
-		}
-		public static void WriteTitle()
-		{
-			LongLine();
-			Console.WriteLine ("\tHexToBin");
-			Console.WriteLine ("\tAuthor:Vowstar");
-			Console.WriteLine ("\tvowstar@gmail.com");
-			LongLine();
-		}
-		public static void WriteError(string format,params object[] arg)
-		{
-			Console.ForegroundColor=ConsoleColor.Blue;
-			Console.WriteLine(format,arg);
-			Console.ResetColor();
-		}
-		public static void Writewarning(string format,params object[] arg)
-		{
-			Console.ForegroundColor=ConsoleColor.Yellow;
-			Console.WriteLine(format,arg);
-			Console.ResetColor();
-		}
-		public static void LongLine()
-		{
-			Console.WriteLine ("================================================================================");
-		}
-		public static void LongSingleLine()
-		{
-			Console.WriteLine ("--------------------------------------------------------------------------------");
-		}
+	}
+	public static void WriteTitle ()
+	{
+		LongLine ();
+		Console.WriteLine ("\tHexToBin");
+		Console.WriteLine ("\tAuthor:Vowstar");
+		Console.WriteLine ("\tvowstar@gmail.com");
+		LongLine ();
+	}
+	public static void WriteError (string format, params object[] arg)
+	{
+		Console.ForegroundColor = ConsoleColor.Blue;
+		Console.WriteLine (format, arg);
+		Console.ResetColor ();
+	}
+	public static void Writewarning (string format, params object[] arg)
+	{
+		Console.ForegroundColor = ConsoleColor.Yellow;
+		Console.WriteLine (format, arg);
+		Console.ResetColor ();
+	}
+	public static void LongLine ()
+	{
+		Console.WriteLine ("================================================================================");
+	}
+	public static void LongSingleLine ()
+	{
+		Console.WriteLine ("--------------------------------------------------------------------------------");
 	}
 }
+
 
