@@ -8,8 +8,8 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 本软件及其代码的作者是黄锐,(Email:vowstar@gmail.com),Lanzhou University
 // --------------------------------------------------------------------------------------
-#define _USEING_GTK_
-#if _USEING_GTK_
+//#define _USEING_GTK_
+//#if _USEING_GTK_
 using System;
 using Gtk;
 
@@ -25,6 +25,18 @@ public partial class MainWindow : Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+	protected virtual void OnButtonConvertClicked (object sender, System.EventArgs e)
+	{
+		
+		
+	}
+	protected virtual void OnButtonQuitClicked (object sender, System.EventArgs e)
+	{
+		DeleteEventArgs a=new DeleteEventArgs();
+	    OnDeleteEvent (this, a);
+	}
+	
+	
 }
 
-#endif
+//#endif

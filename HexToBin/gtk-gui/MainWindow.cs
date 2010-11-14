@@ -3,26 +3,152 @@
 
 public partial class MainWindow
 {
-	private global::Gtk.HBox hbox1;
+	private global::Gtk.Table tableMain;
+
+	private global::Gtk.HBox hboxBin;
+
+	private global::Gtk.Label labelBin;
+
+	private global::Gtk.FileChooserButton filechooserbuttonBin;
+
+	private global::Gtk.HBox hboxHex;
+
+	private global::Gtk.Label labelHex;
+
+	private global::Gtk.FileChooserButton filechooserbuttonHex;
+
+	private global::Gtk.HButtonBox hbuttonboxMain;
+
+	private global::Gtk.Button buttonConvert;
+
+	private global::Gtk.Button buttonAbout;
+
+	private global::Gtk.Button buttonQuit;
+
+	private global::Gtk.Label labelTitle;
 
 	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
 		// Widget MainWindow
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+		this.Title = global::Mono.Unix.Catalog.GetString ("HexToBin");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.hbox1 = new global::Gtk.HBox ();
-		this.hbox1.Name = "hbox1";
-		this.hbox1.Spacing = 6;
-		this.Add (this.hbox1);
+		this.tableMain = new global::Gtk.Table (((uint)(4)), ((uint)(1)), false);
+		this.tableMain.Name = "tableMain";
+		this.tableMain.RowSpacing = ((uint)(6));
+		this.tableMain.ColumnSpacing = ((uint)(6));
+		// Container child tableMain.Gtk.Table+TableChild
+		this.hboxBin = new global::Gtk.HBox ();
+		this.hboxBin.Name = "hboxBin";
+		this.hboxBin.Spacing = 6;
+		// Container child hboxBin.Gtk.Box+BoxChild
+		this.labelBin = new global::Gtk.Label ();
+		this.labelBin.Name = "labelBin";
+		this.labelBin.Xalign = 0f;
+		this.labelBin.LabelProp = global::Mono.Unix.Catalog.GetString ("Bin文件");
+		this.hboxBin.Add (this.labelBin);
+		global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hboxBin[this.labelBin]));
+		w1.Position = 0;
+		w1.Expand = false;
+		w1.Fill = false;
+		// Container child hboxBin.Gtk.Box+BoxChild
+		this.filechooserbuttonBin = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("另存为Bin文件"), ((global::Gtk.FileChooserAction)(0)));
+		this.filechooserbuttonBin.Name = "filechooserbuttonBin";
+		this.hboxBin.Add (this.filechooserbuttonBin);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hboxBin[this.filechooserbuttonBin]));
+		w2.Position = 1;
+		this.tableMain.Add (this.hboxBin);
+		global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tableMain[this.hboxBin]));
+		w3.TopAttach = ((uint)(2));
+		w3.BottomAttach = ((uint)(3));
+		w3.XOptions = ((global::Gtk.AttachOptions)(4));
+		w3.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child tableMain.Gtk.Table+TableChild
+		this.hboxHex = new global::Gtk.HBox ();
+		this.hboxHex.Name = "hboxHex";
+		this.hboxHex.Spacing = 6;
+		// Container child hboxHex.Gtk.Box+BoxChild
+		this.labelHex = new global::Gtk.Label ();
+		this.labelHex.Name = "labelHex";
+		this.labelHex.Xalign = 0f;
+		this.labelHex.LabelProp = global::Mono.Unix.Catalog.GetString ("Hex文件");
+		this.hboxHex.Add (this.labelHex);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hboxHex[this.labelHex]));
+		w4.Position = 0;
+		w4.Expand = false;
+		w4.Fill = false;
+		// Container child hboxHex.Gtk.Box+BoxChild
+		this.filechooserbuttonHex = new global::Gtk.FileChooserButton (global::Mono.Unix.Catalog.GetString ("选择Hex文件"), ((global::Gtk.FileChooserAction)(0)));
+		this.filechooserbuttonHex.Name = "filechooserbuttonHex";
+		this.hboxHex.Add (this.filechooserbuttonHex);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hboxHex[this.filechooserbuttonHex]));
+		w5.Position = 1;
+		this.tableMain.Add (this.hboxHex);
+		global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.tableMain[this.hboxHex]));
+		w6.TopAttach = ((uint)(1));
+		w6.BottomAttach = ((uint)(2));
+		w6.XOptions = ((global::Gtk.AttachOptions)(4));
+		w6.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child tableMain.Gtk.Table+TableChild
+		this.hbuttonboxMain = new global::Gtk.HButtonBox ();
+		this.hbuttonboxMain.Name = "hbuttonboxMain";
+		// Container child hbuttonboxMain.Gtk.ButtonBox+ButtonBoxChild
+		this.buttonConvert = new global::Gtk.Button ();
+		this.buttonConvert.CanFocus = true;
+		this.buttonConvert.Name = "buttonConvert";
+		this.buttonConvert.UseUnderline = true;
+		this.buttonConvert.Label = global::Mono.Unix.Catalog.GetString ("转换(_C)");
+		this.hbuttonboxMain.Add (this.buttonConvert);
+		global::Gtk.ButtonBox.ButtonBoxChild w7 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonboxMain[this.buttonConvert]));
+		w7.Expand = false;
+		w7.Fill = false;
+		// Container child hbuttonboxMain.Gtk.ButtonBox+ButtonBoxChild
+		this.buttonAbout = new global::Gtk.Button ();
+		this.buttonAbout.CanFocus = true;
+		this.buttonAbout.Name = "buttonAbout";
+		this.buttonAbout.UseUnderline = true;
+		this.buttonAbout.Label = global::Mono.Unix.Catalog.GetString ("关于(_A)");
+		this.hbuttonboxMain.Add (this.buttonAbout);
+		global::Gtk.ButtonBox.ButtonBoxChild w8 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonboxMain[this.buttonAbout]));
+		w8.Position = 1;
+		w8.Expand = false;
+		w8.Fill = false;
+		// Container child hbuttonboxMain.Gtk.ButtonBox+ButtonBoxChild
+		this.buttonQuit = new global::Gtk.Button ();
+		this.buttonQuit.CanFocus = true;
+		this.buttonQuit.Name = "buttonQuit";
+		this.buttonQuit.UseUnderline = true;
+		this.buttonQuit.Label = global::Mono.Unix.Catalog.GetString ("退出(_Q)");
+		this.hbuttonboxMain.Add (this.buttonQuit);
+		global::Gtk.ButtonBox.ButtonBoxChild w9 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonboxMain[this.buttonQuit]));
+		w9.Position = 2;
+		w9.Expand = false;
+		w9.Fill = false;
+		this.tableMain.Add (this.hbuttonboxMain);
+		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.tableMain[this.hbuttonboxMain]));
+		w10.TopAttach = ((uint)(3));
+		w10.BottomAttach = ((uint)(4));
+		w10.XOptions = ((global::Gtk.AttachOptions)(4));
+		w10.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child tableMain.Gtk.Table+TableChild
+		this.labelTitle = new global::Gtk.Label ();
+		this.labelTitle.Name = "labelTitle";
+		this.labelTitle.LabelProp = global::Mono.Unix.Catalog.GetString ("<span font_desc='16'>Hex转Bin工具</span>");
+		this.labelTitle.UseMarkup = true;
+		this.tableMain.Add (this.labelTitle);
+		global::Gtk.Table.TableChild w11 = ((global::Gtk.Table.TableChild)(this.tableMain[this.labelTitle]));
+		w11.YOptions = ((global::Gtk.AttachOptions)(4));
+		this.Add (this.tableMain);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 295;
-		this.DefaultHeight = 297;
+		this.DefaultWidth = 263;
+		this.DefaultHeight = 159;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+		this.buttonConvert.Clicked += new global::System.EventHandler (this.OnButtonConvertClicked);
+		this.buttonQuit.Clicked += new global::System.EventHandler (this.OnButtonQuitClicked);
 	}
 }
