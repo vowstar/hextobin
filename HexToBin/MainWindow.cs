@@ -15,6 +15,7 @@ using Gtk;
 
 public partial class MainWindow : Gtk.Window
 {
+	HexToBin.AboutWindow aboutWindow;
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -32,9 +33,20 @@ public partial class MainWindow : Gtk.Window
 	}
 	protected virtual void OnButtonQuitClicked (object sender, System.EventArgs e)
 	{
-		DeleteEventArgs a=new DeleteEventArgs();
-	    OnDeleteEvent (this, a);
+		DeleteEventArgs a = new DeleteEventArgs ();
+		OnDeleteEvent (this, a);
 	}
+
+	protected virtual void OnButtonAboutClicked (object sender, System.EventArgs e)
+	{
+		if (aboutWindow == null) {
+			aboutWindow = new HexToBin.AboutWindow ();
+		} else {
+			if (!aboutWindow.Visible)
+				aboutWindow = new HexToBin.AboutWindow ();
+		}
+	}
+	
 	
 	
 }

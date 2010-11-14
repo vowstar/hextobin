@@ -72,6 +72,8 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ConsoleOutput.cs" />
     <Compile Include="McuUtils.cs" />
+    <Compile Include="AboutWindow.cs" />
+    <Compile Include="gtk-gui\HexToBin.AboutWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
