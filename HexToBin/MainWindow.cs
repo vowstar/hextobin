@@ -19,6 +19,15 @@ public partial class MainWindow : Gtk.Window
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
+		FileFilter filter = new FileFilter ();
+		filter.AddPattern ("*.[hH][eE][xX]");
+		filter.Name = "Hex 文件";
+		FileFilter filterAll = new FileFilter ();
+		filterAll.AddPattern ("*");
+		filterAll.Name = "所有文件";
+		filechooserbuttonHex.AddFilter (filter);
+		filechooserbuttonHex.AddFilter (filterAll);
+		
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -28,7 +37,12 @@ public partial class MainWindow : Gtk.Window
 	}
 	protected virtual void OnButtonConvertClicked (object sender, System.EventArgs e)
 	{
+		FileChooserDialog fcd = new FileChooserDialog ("保存Bin文件      ", this, FileChooserAction.Save, "Cancel", ResponseType.Cancel, "Open", ResponseType.Accept);
 		
+		fcd.SelectMultiple = false;
+		fcd.Modal = true;
+		
+		fcd.ShowAll ();
 		
 	}
 	protected virtual void OnButtonQuitClicked (object sender, System.EventArgs e)
