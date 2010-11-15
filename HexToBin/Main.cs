@@ -20,7 +20,6 @@ namespace HexToBin
 {
 	class MainClass
 	{
-
 		public static void Main (string[] args)
 		{
 			Boolean _ShowHelp = false;
@@ -166,17 +165,8 @@ namespace HexToBin
 							ConsoleOutput.Writewarning ("W:Bin file\'s extension is not \".bin\"");
 						}
 						if (!Error) {
-							McuUtils M = new McuUtils ();
-							M.HexFile = HexPath;
-							M.BinFile = BinPath;
-							M.ReadHexFile ();
-							M.WriteBinFile ();
-							Console.WriteLine ("\tHex Length={0}bytes", M.Hex.Length);
-							Console.WriteLine ("\tBin Length={0}bytes", M.Bin.Length);
-							Console.WriteLine ("\t>>Convert end.");
-						}
-						else
-						{
+							HexToBinConvert (HexPath, BinPath);
+						} else {
 							Console.WriteLine ("\t>>Convert failed.");
 						}
 						
@@ -203,6 +193,18 @@ namespace HexToBin
 			}
 			// Engine code end
 		}
+		public static void HexToBinConvert (string HexPath, string BinPath)
+		{
+			McuUtils M = new McuUtils ();
+			M.HexFile = HexPath;
+			M.BinFile = BinPath;
+			M.ReadHexFile ();
+			M.WriteBinFile ();
+			Console.WriteLine ("\tHex Length={0}bytes", M.Hex.Length);
+			Console.WriteLine ("\tBin Length={0}bytes", M.Bin.Length);
+			Console.WriteLine ("\t>>Convert end.");
+		}
 	}
+	
 }
 

@@ -11,6 +11,7 @@
 //#define _USEING_GTK_
 //#if _USEING_GTK_
 using System;
+using System.IO;
 using Gtk;
 
 public partial class MainWindow : Gtk.Window
@@ -37,13 +38,44 @@ public partial class MainWindow : Gtk.Window
 	}
 	protected virtual void OnButtonConvertClicked (object sender, System.EventArgs e)
 	{
-		FileChooserDialog fcd = new FileChooserDialog ("保存Bin文件      ", this, FileChooserAction.Save, "Cancel", ResponseType.Cancel, "Open", ResponseType.Accept);
-		
-		fcd.SelectMultiple = false;
-		fcd.Modal = true;
-		
-		fcd.ShowAll ();
-		
+		if (File.Exists (filechooserbuttonHex.Filename)) {
+			using (FileChooserDialog fileChooserDialogBin = new FileChooserDialog ("保存Bin文件      ", this, FileChooserAction.Save, "取消(_C)", ResponseType.Cancel, "保存(_S)", ResponseType.Accept)) {
+				fileChooserDialogBin.SelectMultiple = false;
+				fileChooserDialogBin.LocalOnly = true;
+				fileChooserDialogBin.Modal = true;
+				fileChooserDialogBin.Title = this.Title + "另存为";
+				FileFilter filter = new FileFilter ();
+				filter.AddPattern ("*.[bB][iI][nN]");
+				filter.Name = "Bin文件";
+				fileChooserDialogBin.AddFilter (filter);
+				bool notwrite = false;
+				if (fileChooserDialogBin.Run () == (int)ResponseType.Accept) {
+					if (File.Exists (fileChooserDialogBin.Filename)) {
+						using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "您确定要覆盖{0}吗?", fileChooserDialogBin.Filename)) {
+							msg.Modal = true;
+							msg.Title = this.Title + "提示:";
+							if (msg.Run () == (int)ResponseType.No) {
+								notwrite = true;
+							}
+							msg.Destroy ();
+						}
+					}
+					if (!notwrite) {
+						HexToBin.MainClass.HexToBinConvert (filechooserbuttonHex.Filename, fileChooserDialogBin.Filename);
+					}
+				}
+				
+				fileChooserDialogBin.Destroy ();
+			}
+		} else {
+			using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Close, "无效的Hex文件!\n请重新选择要转换的Hex文件.")) {
+				msg.Modal = true;
+				msg.Title = this.Title + "提示:";
+				if (msg.Run () == (int)ResponseType.Close) {
+					msg.Destroy ();
+				}
+			}
+		}
 	}
 	protected virtual void OnButtonQuitClicked (object sender, System.EventArgs e)
 	{

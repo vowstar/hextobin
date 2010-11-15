@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" ctype="Workspace" />
   <MonoDevelop.Ide.Workbench ActiveDocument="HexToBin/MainWindow.cs" ctype="Workbench">
     <Files>
-      <File FileName="HexToBin/MainWindow.cs" Line="32" Column="37" />
-      <File FileName="Assembly Browser" />
+      <File FileName="HexToBin/MainWindow.cs" Line="76" Column="6" />
+      <File FileName="HexToBin/Main.cs" Line="195" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
