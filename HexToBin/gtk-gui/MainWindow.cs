@@ -29,6 +29,7 @@ public partial class MainWindow
 		// Widget MainWindow
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("HexToBin");
+		this.Icon = global::Gdk.Pixbuf.LoadFromResource ("HexToBin.icon.main.hextobin_192x192.png");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.tableMain = new global::Gtk.Table (((uint)(4)), ((uint)(1)), false);
