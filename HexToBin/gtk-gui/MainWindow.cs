@@ -19,6 +19,8 @@ public partial class MainWindow
 
 	private global::Gtk.Button buttonQuit;
 
+	private global::Gtk.Image imageLogo;
+
 	private global::Gtk.Label labelTitle;
 
 	protected virtual void Build ()
@@ -29,7 +31,7 @@ public partial class MainWindow
 		this.Title = global::Mono.Unix.Catalog.GetString ("HexToBin");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.tableMain = new global::Gtk.Table (((uint)(3)), ((uint)(1)), false);
+		this.tableMain = new global::Gtk.Table (((uint)(4)), ((uint)(1)), false);
 		this.tableMain.Name = "tableMain";
 		this.tableMain.RowSpacing = ((uint)(6));
 		this.tableMain.ColumnSpacing = ((uint)(6));
@@ -55,8 +57,8 @@ public partial class MainWindow
 		w2.Position = 1;
 		this.tableMain.Add (this.hboxHex);
 		global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tableMain[this.hboxHex]));
-		w3.TopAttach = ((uint)(1));
-		w3.BottomAttach = ((uint)(2));
+		w3.TopAttach = ((uint)(2));
+		w3.BottomAttach = ((uint)(3));
 		w3.XOptions = ((global::Gtk.AttachOptions)(4));
 		w3.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child tableMain.Gtk.Table+TableChild
@@ -96,24 +98,31 @@ public partial class MainWindow
 		w6.Fill = false;
 		this.tableMain.Add (this.hbuttonboxMain);
 		global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.tableMain[this.hbuttonboxMain]));
-		w7.TopAttach = ((uint)(2));
-		w7.BottomAttach = ((uint)(3));
+		w7.TopAttach = ((uint)(3));
+		w7.BottomAttach = ((uint)(4));
 		w7.XOptions = ((global::Gtk.AttachOptions)(4));
 		w7.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child tableMain.Gtk.Table+TableChild
+		this.imageLogo = new global::Gtk.Image ();
+		this.imageLogo.Name = "imageLogo";
+		this.imageLogo.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("HexToBin.icon.main.hextobin_192x192.png");
+		this.tableMain.Add (this.imageLogo);
 		// Container child tableMain.Gtk.Table+TableChild
 		this.labelTitle = new global::Gtk.Label ();
 		this.labelTitle.Name = "labelTitle";
 		this.labelTitle.LabelProp = global::Mono.Unix.Catalog.GetString ("<span font_desc='16'>Hex转Bin工具</span>");
 		this.labelTitle.UseMarkup = true;
 		this.tableMain.Add (this.labelTitle);
-		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.tableMain[this.labelTitle]));
-		w8.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.tableMain[this.labelTitle]));
+		w9.TopAttach = ((uint)(1));
+		w9.BottomAttach = ((uint)(2));
+		w9.YOptions = ((global::Gtk.AttachOptions)(4));
 		this.Add (this.tableMain);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
 		this.DefaultWidth = 263;
-		this.DefaultHeight = 124;
+		this.DefaultHeight = 322;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.buttonConvert.Clicked += new global::System.EventHandler (this.OnButtonConvertClicked);
