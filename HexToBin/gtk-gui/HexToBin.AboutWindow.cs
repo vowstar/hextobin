@@ -35,18 +35,14 @@ namespace HexToBin
 			this.tableMain.Add (this.imageLogo);
 			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.tableMain[this.imageLogo]));
 			w2.XOptions = ((global::Gtk.AttachOptions)(4));
-			w2.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child tableMain.Gtk.Table+TableChild
 			this.labelTitle = new global::Gtk.Label ();
 			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.LabelProp = global::Mono.Unix.Catalog.GetString ("<span font_desc='32'>Hex转Bin工具</span>\n<span font_desc='16'>协议:GNU GPL V3</span>\n\n<span font_desc='16'>黄锐,兰州大学</span>\n<span font_desc='16'>vowstar@gmail.com</span>");
-			this.labelTitle.UseMarkup = true;
+			this.labelTitle.LabelProp = global::Mono.Unix.Catalog.GetString ("<span font_desc='32'>Hex转Bin工具</span>\n<span font_desc='16'>版本:{VERSION}</span>\n<span font_desc='16'>协议:GNU GPL V3</span>\n\n<span font_desc='16'>黄锐,兰州大学</span>\n<span font_desc='16'>vowstar@gmail.com</span>");
 			this.tableMain.Add (this.labelTitle);
 			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.tableMain[this.labelTitle]));
 			w3.LeftAttach = ((uint)(1));
 			w3.RightAttach = ((uint)(2));
-			w3.XOptions = ((global::Gtk.AttachOptions)(4));
-			w3.YOptions = ((global::Gtk.AttachOptions)(4));
 			w1.Add (this.tableMain);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(w1[this.tableMain]));
 			w4.Position = 0;
@@ -73,7 +69,7 @@ namespace HexToBin
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 489;
+			this.DefaultWidth = 556;
 			this.DefaultHeight = 265;
 			this.Show ();
 			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);

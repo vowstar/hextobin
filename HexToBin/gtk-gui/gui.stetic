@@ -163,7 +163,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="HexToBin.AboutWindow" design-size="489 265">
+  <widget class="Gtk.Dialog" id="HexToBin.AboutWindow" design-size="556 265">
     <property name="MemberName" />
     <property name="Title" translatable="yes">关于</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -185,13 +185,12 @@
                 <property name="Pixbuf">resource:HexToBin.icon.main.hextobin_192x192.png</property>
               </widget>
               <packing>
-                <property name="AutoSize">True</property>
+                <property name="AutoSize">False</property>
                 <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
                 <property name="XExpand">False</property>
                 <property name="XFill">True</property>
                 <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
+                <property name="YExpand">True</property>
                 <property name="YFill">True</property>
                 <property name="YShrink">False</property>
               </packing>
@@ -200,22 +199,20 @@
               <widget class="Gtk.Label" id="labelTitle">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">&lt;span font_desc='32'&gt;Hex转Bin工具&lt;/span&gt;
+&lt;span font_desc='16'&gt;版本:{VERSION}&lt;/span&gt;
 &lt;span font_desc='16'&gt;协议:GNU GPL V3&lt;/span&gt;
 
 &lt;span font_desc='16'&gt;黄锐,兰州大学&lt;/span&gt;
 &lt;span font_desc='16'&gt;vowstar@gmail.com&lt;/span&gt;</property>
-                <property name="UseMarkup">True</property>
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>
                 <property name="RightAttach">2</property>
-                <property name="AutoSize">True</property>
-                <property name="XOptions">Fill</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">False</property>
+                <property name="AutoSize">False</property>
+                <property name="XExpand">True</property>
                 <property name="XFill">True</property>
                 <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
+                <property name="YExpand">True</property>
                 <property name="YFill">True</property>
                 <property name="YShrink">False</property>
               </packing>
