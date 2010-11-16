@@ -1,18 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HexToBin/MainWindow.cs" ctype="Workbench">
-    <Files>
-      <File FileName="HexToBin/MainWindow.cs" Line="102" Column="13" />
-      <File FileName="HexToBin/Main.cs" Line="139" Column="124" />
-      <File FileName="HexToBin/ConsoleOutput.cs" Line="36" Column="11" />
-      <File FileName="HexToBin/AboutWindow.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="HexToBin" expanded="True">
             <Node name="UserInterface" expanded="True" />
-            <Node name="MainWindow.cs" selected="True" />
+            <Node name="Main.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -25,4 +19,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+  <AuthorInfo Name="vowstar" Email="vowstar@gmail.com" Copyright="vowstar" ctype="AuthorInformation" />
 </Properties>

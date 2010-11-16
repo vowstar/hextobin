@@ -16,5 +16,16 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = HexToBin\HexToBin.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.TabWidth = 4
+		$1.inheritsSet = Mono
+		$1.inheritsScope = text/plain
+		$1.scope = text/plain
+		$0.StandardHeader = $2
+		$2.Text = 
+		$2.inheritsSet = Apache2License
+		version = 0.1.0
 	EndGlobalSection
 EndGlobal

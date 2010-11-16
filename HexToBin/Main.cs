@@ -66,6 +66,9 @@ namespace HexToBin
 											case "--exit":
 												_Bye = true;
 												break;
+											case "--quit":
+												_Bye = true;
+												break;
 											case "--desktop":
 												_Desktop = true;
 												break;
