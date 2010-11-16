@@ -44,28 +44,36 @@ public partial class MainWindow : Gtk.Window
 				fileChooserDialogBin.LocalOnly = true;
 				fileChooserDialogBin.Modal = true;
 				fileChooserDialogBin.Title = this.Title + "另存为";
-				FileFilter filter = new FileFilter ();
-				filter.AddPattern ("*.[bB][iI][nN]");
-				filter.Name = "Bin文件";
-				fileChooserDialogBin.AddFilter (filter);
-				bool notwrite = false;
-				if (fileChooserDialogBin.Run () == (int)ResponseType.Accept) {
-					if (File.Exists (fileChooserDialogBin.Filename)) {
-						using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "您确定要覆盖{0}吗?", fileChooserDialogBin.Filename)) {
-							msg.Modal = true;
-							msg.Title = this.Title + "提示:";
-							if (msg.Run () == (int)ResponseType.No) {
-								notwrite = true;
+				fileChooserDialogBin.SetCurrentFolder (System.IO.Path.GetDirectoryName (filechooserbuttonHex.Filename));
+				fileChooserDialogBin.CurrentName = System.IO.Path.GetFileNameWithoutExtension (filechooserbuttonHex.Filename) + ".bin";
+				using (FileFilter filter = new FileFilter ()) {
+					filter.AddPattern ("*.[bB][iI][nN]");
+					filter.Name = "Bin文件";
+					fileChooserDialogBin.AddFilter (filter);
+					bool notwrite = false;
+					if (fileChooserDialogBin.Run () == (int)ResponseType.Accept) {
+						
+						if (File.Exists (fileChooserDialogBin.Filename)) {
+							using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, "您确定要覆盖{0}吗?", fileChooserDialogBin.Filename)) {
+								msg.Modal = true;
+								msg.Title = this.Title + "提示:";
+								if (msg.Run () == (int)ResponseType.No) {
+									notwrite = true;
+								}
+								msg.Destroy ();
 							}
-							msg.Destroy ();
+						}
+						if (!notwrite) {
+							string HexPath = filechooserbuttonHex.Filename;
+							string BinPath = fileChooserDialogBin.Filename;
+							if (System.IO.Path.GetExtension (BinPath).ToUpper () != ".BIN")
+								BinPath += ".bin";
+							HexToBin.MainClass.HexToBinConvert (HexPath, BinPath);
 						}
 					}
-					if (!notwrite) {
-						HexToBin.MainClass.HexToBinConvert (filechooserbuttonHex.Filename, fileChooserDialogBin.Filename);
-					}
+					
+					fileChooserDialogBin.Destroy ();
 				}
-				
-				fileChooserDialogBin.Destroy ();
 			}
 		} else {
 			using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Close, "无效的Hex文件!\n请重新选择要转换的Hex文件.")) {

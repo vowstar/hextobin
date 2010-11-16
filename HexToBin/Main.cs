@@ -142,34 +142,11 @@ namespace HexToBin
 						Console.WriteLine ("\tHex to bin help:");
 					}
 					if (HexPath.Length > 0) {
-						Console.WriteLine ("\tHex input file:\n{0}", HexPath);
+						
 						if (BinPath.Length == 0) {
 							BinPath = Path.Combine (Path.GetDirectoryName (HexPath), Path.GetFileNameWithoutExtension (HexPath) + ".bin");
 						}
-						Console.WriteLine ("\tBin output file:\n{0}", BinPath);
-						ConsoleOutput.LongSingleLine ();
-						Console.WriteLine ("\t>>Begin convert...");
-						if (!File.Exists (HexPath)) {
-							ConsoleOutput.WriteError ("E:Hex input file NOT EXIST!");
-							Error = true;
-						}
-						if (File.Exists (BinPath)) {
-							ConsoleOutput.EnableColor = false;
-							ConsoleOutput.Writewarning ("W:Bin output file already exist.");
-							ConsoleOutput.EnableColor = true;
-						}
-						if (Path.GetExtension (HexPath).ToUpper () != ".HEX") {
-							ConsoleOutput.Writewarning ("W:Hex file\'s extension is not \".hex\"");
-						}
-						if (Path.GetExtension (BinPath).ToUpper () != ".BIN") {
-							ConsoleOutput.Writewarning ("W:Bin file\'s extension is not \".bin\"");
-						}
-						if (!Error) {
-							HexToBinConvert (HexPath, BinPath);
-						} else {
-							Console.WriteLine ("\t>>Convert failed.");
-						}
-						
+						HexToBinConvert (HexPath, BinPath);
 					}
 					
 					if (_Desktop) {
@@ -195,14 +172,40 @@ namespace HexToBin
 		}
 		public static void HexToBinConvert (string HexPath, string BinPath)
 		{
-			McuUtils M = new McuUtils ();
-			M.HexFile = HexPath;
-			M.BinFile = BinPath;
-			M.ReadHexFile ();
-			M.WriteBinFile ();
-			Console.WriteLine ("\tHex Length={0}bytes", M.Hex.Length);
-			Console.WriteLine ("\tBin Length={0}bytes", M.Bin.Length);
-			Console.WriteLine ("\t>>Convert end.");
+			Boolean Error = false;
+			Console.WriteLine ("\tHex input file:\n{0}", HexPath);
+			Console.WriteLine ("\tBin output file:\n{0}", BinPath);
+			ConsoleOutput.LongSingleLine ();
+			Console.WriteLine ("\t>>Begin convert...");
+			if (!File.Exists (HexPath)) {
+				ConsoleOutput.WriteError ("E:Hex input file NOT EXIST!");
+				Error = true;
+			}
+			
+			if (!Error) {
+				if (File.Exists (BinPath)) {
+					ConsoleOutput.EnableColor = false;
+					ConsoleOutput.Writewarning ("W:Bin output file already exist.");
+					ConsoleOutput.EnableColor = true;
+				}
+				if (Path.GetExtension (HexPath).ToUpper () != ".HEX") {
+					ConsoleOutput.Writewarning ("W:Hex file\'s extension is not \".hex\"");
+				}
+				if (Path.GetExtension (BinPath).ToUpper () != ".BIN") {
+					ConsoleOutput.Writewarning ("W:Bin file\'s extension is not \".bin\"");
+				}
+				McuUtils M = new McuUtils ();
+				M.HexFile = HexPath;
+				M.BinFile = BinPath;
+				M.ReadHexFile ();
+				M.WriteBinFile ();
+				Console.WriteLine ("\tHex Length={0}bytes", M.Hex.Length);
+				Console.WriteLine ("\tBin Length={0}bytes", M.Bin.Length);
+				Console.WriteLine ("\t>>Convert end.");
+			} else {
+				Console.WriteLine ("\t>>Convert failed.");
+			}
+			
 		}
 	}
 	
