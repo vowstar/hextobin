@@ -18,9 +18,8 @@ public class ConsoleOutput
 	public static void WriteTitle ()
 	{
 		LongLine ();
-		Console.WriteLine ("\tHexToBin");
-		Console.WriteLine ("\tAuthor:Vowstar(蝶晓梦),©Vowstar(蝶晓梦)");
-		Console.WriteLine ("\tvowstar@gmail.com");
+		Console.WriteLine ("\tHexToBin\t{0}\n\tLicence:\tGNU GENERAL PUBLIC LICENSE Version 3",System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ());
+		Console.WriteLine ("\tAuthor:\tVowstar(蝶晓梦)\n\t©Vowstar(蝶晓梦)\tvowstar@gmail.com");
 		LongLine ();
 	}
 	public static void WriteError (string format, params object[] arg)

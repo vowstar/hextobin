@@ -17,6 +17,7 @@ using Gtk;
 public partial class MainWindow : Gtk.Window
 {
 	HexToBin.AboutWindow aboutWindow;
+	string currentHexFile=string.Empty;
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -27,8 +28,7 @@ public partial class MainWindow : Gtk.Window
 		filterAll.AddPattern ("*");
 		filterAll.Name = "所有文件";
 		filechooserbuttonHex.AddFilter (filter);
-		filechooserbuttonHex.AddFilter (filterAll);
-		
+		filechooserbuttonHex.AddFilter (filterAll);	
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -38,14 +38,16 @@ public partial class MainWindow : Gtk.Window
 	}
 	protected virtual void OnButtonConvertClicked (object sender, System.EventArgs e)
 	{
-		if (File.Exists (filechooserbuttonHex.Filename)) {
+		
+		
+		if (File.Exists (currentHexFile)) {
 			using (FileChooserDialog fileChooserDialogBin = new FileChooserDialog ("保存Bin文件      ", this, FileChooserAction.Save, "取消(_C)", ResponseType.Cancel, "保存(_S)", ResponseType.Accept)) {
 				fileChooserDialogBin.SelectMultiple = false;
 				fileChooserDialogBin.LocalOnly = true;
 				fileChooserDialogBin.Modal = true;
 				fileChooserDialogBin.Title = this.Title + "另存为";
-				fileChooserDialogBin.SetCurrentFolder (System.IO.Path.GetDirectoryName (filechooserbuttonHex.Filename));
-				fileChooserDialogBin.CurrentName = System.IO.Path.GetFileNameWithoutExtension (filechooserbuttonHex.Filename) + ".bin";
+				fileChooserDialogBin.SetCurrentFolder (System.IO.Path.GetDirectoryName (currentHexFile));
+				fileChooserDialogBin.CurrentName = System.IO.Path.GetFileNameWithoutExtension (currentHexFile) + ".bin";
 				using (FileFilter filter = new FileFilter ()) {
 					filter.AddPattern ("*.[bB][iI][nN]");
 					filter.Name = "Bin文件";
@@ -64,7 +66,7 @@ public partial class MainWindow : Gtk.Window
 							}
 						}
 						if (!notwrite) {
-							string HexPath = filechooserbuttonHex.Filename;
+							string HexPath = currentHexFile;
 							string BinPath = fileChooserDialogBin.Filename;
 							if (System.IO.Path.GetExtension (BinPath).ToUpper () != ".BIN")
 								BinPath += ".bin";
@@ -73,7 +75,7 @@ public partial class MainWindow : Gtk.Window
 					}
 					
 					fileChooserDialogBin.Destroy ();
-				}
+				}				
 			}
 		} else {
 			using (Gtk.MessageDialog msg = new Gtk.MessageDialog (this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Close, "无效的Hex文件!\n请重新选择要转换的Hex文件.")) {
@@ -82,6 +84,7 @@ public partial class MainWindow : Gtk.Window
 				if (msg.Run () == (int)ResponseType.Close) {
 					msg.Destroy ();
 				}
+				filechooserbuttonHex.SetFilename(string.Empty);
 			}
 		}
 	}
@@ -101,6 +104,11 @@ public partial class MainWindow : Gtk.Window
 		}
 	}
 	
+	protected virtual void OnFilechooserbuttonHexSelectionChanged (object sender, System.EventArgs e)
+	{
+		currentHexFile=filechooserbuttonHex.Filename;
+		Console.WriteLine("\tCurrent file changed to{0}",currentHexFile);
+	}
 	
 	
 }

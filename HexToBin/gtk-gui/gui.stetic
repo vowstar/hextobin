@@ -40,6 +40,7 @@
               <widget class="Gtk.FileChooserButton" id="filechooserbuttonHex">
                 <property name="MemberName" />
                 <property name="Title" translatable="yes">选择Hex文件</property>
+                <signal name="SelectionChanged" handler="OnFilechooserbuttonHexSelectionChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>

@@ -119,5 +119,6 @@ public partial class MainWindow
 		this.buttonConvert.Clicked += new global::System.EventHandler (this.OnButtonConvertClicked);
 		this.buttonAbout.Clicked += new global::System.EventHandler (this.OnButtonAboutClicked);
 		this.buttonQuit.Clicked += new global::System.EventHandler (this.OnButtonQuitClicked);
+		this.filechooserbuttonHex.SelectionChanged += new global::System.EventHandler (this.OnFilechooserbuttonHexSelectionChanged);
 	}
 }

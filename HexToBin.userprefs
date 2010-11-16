@@ -1,16 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HexToBin/Main.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HexToBin/MainWindow.cs" ctype="Workbench">
     <Files>
-      <File FileName="HexToBin/MainWindow.cs" Line="81" Column="36" />
-      <File FileName="HexToBin/Main.cs" Line="175" Column="25" />
+      <File FileName="HexToBin/MainWindow.cs" Line="87" Column="50" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="HexToBin" expanded="True">
+          <Node name="HexToBin" expanded="True" selected="True">
             <Node name="UserInterface" expanded="True" />
-            <Node name="Main.cs" selected="True" />
           </Node>
         </State>
       </Pad>
